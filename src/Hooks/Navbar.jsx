@@ -9,10 +9,9 @@ function Navbar() {
             <ul className="navbar-sections">
                 <li>Categories</li>
                 <li><Link to="shop">Shop</Link></li>
-                <li>Offers</li>
                 <li>About us</li>
             </ul>
-            <a href="#">Cart</a>
+            <Link to="cart">Cart</Link>
         </header>
     )
 }
