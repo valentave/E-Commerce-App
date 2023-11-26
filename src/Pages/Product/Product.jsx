@@ -19,9 +19,8 @@ function Product() {
         setProduct({...response});
         setIsLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setNotFound(true)
-        //console.log(err)
       });
   }, [params.id]);
 

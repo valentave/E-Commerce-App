@@ -16,7 +16,6 @@ const Router = () => {
         {path: "cart", element: <Cart/>},
         {path: "*", element: <ErrorPage/>}
       ],
-      //errorElement: <ErrorPage />,
     },
   ]);
 
