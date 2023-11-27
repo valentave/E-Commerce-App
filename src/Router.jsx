@@ -12,7 +12,9 @@ const Router = () => {
       path: "/",
       element: <App />,
       children: [
-        {path: "shop", element: <Shop />},
+        {path: "shop", element: <Shop />, children: [
+          {path: ":category", element: <Shop/>}
+        ]},
         {path: "product/:id", element: <Product />},
         {path: "cart", element: <Cart/>},
         {path: "*", element: <ErrorPage/>},
