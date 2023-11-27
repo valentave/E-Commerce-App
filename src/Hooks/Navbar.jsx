@@ -47,6 +47,7 @@ function Navbar() {
                     )}
                 <li><Link to="shop">Shop</Link></li>
                 <li><Link to="about-us">About us</Link></li>
+                <li><Link to="#">Help</Link></li>
             </ul>
             <Link to="cart">Cart</Link>
         </header>
