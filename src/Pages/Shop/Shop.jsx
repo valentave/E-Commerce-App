@@ -12,7 +12,7 @@ function Shop() {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortOption, setSortOption] = useState(''); // Nuevo estado para la opción de orden
     const params = useParams();
-    const navigate = useNavigate();
+    useNavigate();
 
     useEffect(() => {
         setIsLoading(true);
