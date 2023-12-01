@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductCard from "../../Hooks/ProductCard";
 import LoadingGif from "../../assets/loading.gif";
+import "../Shop/Shop.css"
 
 function Shop() {
     const [originalProducts, setOriginalProducts] = useState([]);
@@ -20,7 +21,8 @@ function Shop() {
 
         if (Object.keys(params).length > 0) {
             apiUrl = `https://fakestoreapi.com/products/category/${params.category}`;
-        }
+            document.title = params.category + " in Free Market";
+        } else document.title = "Shop | Free Market";
 
         fetch(apiUrl)
             .then((response) => response.json())
@@ -65,8 +67,8 @@ function Shop() {
     }, [minPrice, maxPrice, searchTerm, originalProducts, sortOption]);
 
     return (
-        <>
-            <div>
+        <div className="content-shop content">
+            <div className="filters-container">
                 <div>
                     <label htmlFor="minPrice">Min Price:</label>
                     <input type="number" id="minPrice" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
@@ -93,7 +95,7 @@ function Shop() {
             </div>
 
             {isLoading &&
-                <div>
+                <div className="loading-container">
                     <img src={LoadingGif} alt="Loading" />
                     <p>Loading...</p>
                 </div>
@@ -105,7 +107,7 @@ function Shop() {
                     ))}
                 </div>
             }
-        </>
+        </div>
     )
 }
 

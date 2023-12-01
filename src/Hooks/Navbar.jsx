@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/logo.webp";
+import Cart from "../assets/cart.svg";
+import Menu from "../assets/menu.svg";
+import "./navbar.css";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [categories, setCategories] = useState([]);
     const dropDownRef = useRef(null);
+    const [menuCollapsed, setMenuCollapsed] = useState(true);
 
     function handleDropClick() {
         setIsOpen(!isOpen);
@@ -31,25 +36,34 @@ function Navbar() {
         }
     }, []);
 
+    function handleToggleMenu() {
+        setMenuCollapsed(!menuCollapsed);
+    }
+
     return (
         <header className="navbar">
-            <Link to="/">
-                <img src="" alt="logo" />
-            </Link>
-            <ul className="navbar-sections" ref={dropDownRef}>
-                <li><button onClick={handleDropClick}>Categories</button></li>
-                {isOpen && (
-                    <ul>
-                        {categories.map((category) => (
-                            <li key={category}><Link to={"./shop/" + category}>{category}</Link></li>
-                        ))}
-                    </ul>
-                    )}
-                <li><Link to="shop">Shop</Link></li>
-                <li><Link to="about-us">About us</Link></li>
-                <li><Link to="#">Help</Link></li>
-            </ul>
-            <Link to="cart">Cart</Link>
+            <div>
+                <Link to="/">
+                    <img src={Logo} alt="logo" className="logo"/>
+                </Link>
+                <ul className={"navbar-sections" + (menuCollapsed ? "" : " show")} ref={dropDownRef}>
+                    <li><button onClick={handleDropClick} className="categories-btn">Categories</button></li>
+                    {isOpen && (
+                        <ul className="categories-list">
+                            {categories.map((category) => (
+                                <li className="category-item" key={category}><Link className="category" to={"./shop/" + category}>{category}</Link></li>
+                            ))}
+                        </ul>
+                        )}
+                    <li><Link className="navbar-item" to="shop">Shop</Link></li>
+                    <li><Link className="navbar-item" to="about-us">About us</Link></li>
+                    <li><Link className="navbar-item" to="#">Help</Link></li>
+                </ul>
+                <div className="menu-cart-container">
+                    <button className="menu-btn" onClick={handleToggleMenu}><img src={Menu} alt="menu" /></button>
+                    <Link to="cart"><img src={Cart} alt="shopping cart" /></Link>
+                </div>
+            </div>
         </header>
     )
 }

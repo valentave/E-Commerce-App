@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import "./CartItem.css"
 
 function CartItem({item, onChange, onRemove}) {
 
@@ -17,17 +18,24 @@ function CartItem({item, onChange, onRemove}) {
     }
 
     return(
-        <div>
-            <h2>{item.title}</h2>
-            <img src={item.image} alt={item.title} />
-            <p>${item.price}</p>
-            <div>
+        <div className='cart-item'>
+            <div className='cart-item-first-column'>
+                <div className='cart-item-img-container'>
+                    <img src={item.image} alt={item.title} />
+                </div>
+                <div className='cart-item-data-container'>
+                    <h3>{item.title}</h3>
+                    <button className='remove-btn' onClick={onRemove} id={"remove-button-" + item.id}>Remove</button>
+                </div>
+            </div>
+            <div className='cart-item-second-column'>
                 <button onClick={removeOne}>-</button>
-                <input type="number" id={"cart-item-" + item.id} value={item.quantity} onChange={onChange}/>
+                <input type="number" id={"cart-item-" + item.id} value={item.quantity} onChange={onChange} min="1"/>
                 <button onClick={addOne}>+</button>
             </div>
-            <p>Total: ${(item.price * item.quantity).toFixed(2)}</p>
-            <button onClick={onRemove} id={"remove-button-" + item.id}>Remove</button>
+            <div className='cart-item-third-column'>
+                <p>${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
         </div>
     )
 }

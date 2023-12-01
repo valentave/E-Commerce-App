@@ -1,0 +1,99 @@
+.footer {
+    background-color: white;
+    width: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.footer-links {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+li {
+    list-style: none;
+}
+
+.more-info-btn {
+    background-color: #f7f7f7;
+    border: none;
+    padding: 0 2ch;
+    padding-right: 3ch;
+    height: 2rem;
+    position: absolute;
+    top: -2rem;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+}
+
+
+.more-info-btn::after {
+    border-style: solid;
+    border-color: black;
+    border-width: 0 1.5px 1.5px 0;
+    content: "";
+    display: inline-block;
+    height: 1.5px;
+    transform: rotate(45deg);
+    width: 1.5px;
+    color: rgba(0,0,0,.3);
+    margin: 0;
+    padding: 2px;
+    margin-left: 1ch;
+    position: absolute;
+    bottom: 40%;
+}
+
+.more-info-footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 20px;
+    background: #f7f7f7;
+}
+
+.more-info-headers {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.more-info-footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.more-info-footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 990px) {
+    .footer-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .more-info-footer {
+        width: 100%;
+        flex-wrap: wrap;
+        text-align: center;
+        gap: 15px;
+    }
+}

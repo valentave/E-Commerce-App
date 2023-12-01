@@ -1,0 +1,36 @@
+.product-also-bought {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    border-radius: 10px;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
+}
+
+.product-also-bought > hr {
+    width: 100%;
+}
+
+.product-ab-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 200px;
+    padding: 15px;
+}
+
+.product-ab-img-container > img {
+    width: 80%;
+}
+
+.product-ab-price {
+    font-size: 1.5rem;
+}
+
+.product-ab-data-container {
+    width: 100%;
+    padding: 10px 15px;
+}
