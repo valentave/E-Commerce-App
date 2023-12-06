@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/logo.webp";
 import Cart from "../assets/cart.svg";
 import Menu from "../assets/menu.svg";
-import "./navbar.css";
+import "./Navbar.css";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
