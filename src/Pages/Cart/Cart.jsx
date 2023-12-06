@@ -11,7 +11,6 @@ function Cart() {
     let totalPrice = (cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)).toFixed(2);
     let totalProducts = (cartItems.reduce((acc, item) => acc + parseInt(item.quantity), 0));
     const [progressBar, setProgressBar] = useState(totalPrice >= 20 ? 2000 : ((20 - (20 - totalPrice)) * 1000));
-    
     document.title = "Cart | Free Market";
 
     useEffect(() => {
@@ -47,9 +46,22 @@ function Cart() {
         const copyCart = cartItems.filter((item) => item.id != targetId);
         setCartItems([...copyCart])
     }
+
+    
+
+    function showNotification() {
+        document.querySelector(".notification-container").classList.remove("inactive");
+        setCartItems([])
+        setTimeout(() => {
+        document.querySelector(".notification-container").classList.add("inactive");
+        }, 5000)
+    }
     
     return(
         <div className="content content-cart">
+            <div className="notification-container inactive">
+                <p>Thank you! Your purchase has been confirmed.</p>
+            </div>
             {emptyCart &&
             <div className="cart-empty-container">
                 <h1>There seems to be nothing in your cart.</h1>
@@ -112,7 +124,7 @@ function Cart() {
                             <h3>TOTAL</h3>
                             <h3>${totalPrice >= 20 ? totalPrice : (parseFloat(totalPrice) + 20).toFixed(2)}</h3>
                         </div>
-                        <button className="checkout-btn">Checkout</button>
+                        <button className="checkout-btn" onClick={showNotification}>Checkout</button>
                     </div>
                 </div>
                 </>

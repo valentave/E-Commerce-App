@@ -19,6 +19,7 @@ function Product() {
   const [buyCount, setBuyCount] = useState(1);
   const params = useParams();
   const [cartItems, setCartItems] = useContext(CartContext);
+  const [isNotificationShown, setIsNotificationShown] = useState(false);
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products/' + params.id)
@@ -63,10 +64,25 @@ function Product() {
       });
       setCartItems([...cartCopy]);
     }
+    showNotification(item.quantity);
+  }
+
+  function showNotification(quantity) {
+    setIsNotificationShown(quantity);
+    document.querySelector(".notification-container").classList.remove("inactive");
+    setTimeout(() => {
+      document.querySelector(".notification-container").classList.add("inactive");
+      setIsNotificationShown(false)
+    }, 3500)
   }
 
   return (
     <div className="content-product content">
+      <div className="notification-container inactive">
+        {isNotificationShown === 1 ?
+          <p><span className="green-text bold-text">1</span> product has been added to the cart.</p> :
+          <p><span className="green-text bold-text">{isNotificationShown}</span> products have been added to the cart.</p>}
+      </div>
       {isLoading &&
         <div className="loading-container">
           <img src={LoadingGif} />
